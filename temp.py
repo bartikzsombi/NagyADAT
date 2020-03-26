@@ -127,10 +127,31 @@ corr
 #%%
 sns.heatmap(corr)
 #%%
-
-
-
-
+fig, ax = plt.subplots(figsize=(12,5))
+sns.heatmap(corr,annot=True,ax=ax)
+#%%
+sns.scatterplot(data=df,x='total day minutes',y='total night minutes')
+#%%
+sns.scatterplot(data=df,x='total day minutes',y='total night minutes', hue='churn')
+#%%
+plt.scatter(df['total day minutes'],y=df['total night minutes'])
+#%%
+sns.jointplot(data=df,x='total day minutes',y='total night minutes', color='g')
+#%%
+sns.pairplot(df.loc[:,'number vmail messages':'total night minutes'])
+#%%
+sns.distplot(df['total intl calls'])
+#%%
+fig, ax = plt.subplots(nrows=1,ncols=2,figsize=(10,5))
+sns.violinplot(data=df['total intl calls'],ax=ax[0])
+sns.boxplot(data=df['total intl calls'],ax=ax[1])
+#%%
+fig, ax = plt.subplots(nrows=2,ncols=2,figsize=(10,5))
+sns.violinplot(data=df['total intl calls'],ax=ax[0,0])
+sns.boxplot(data=df['total intl calls'],ax=ax[1,1])
+df['total intl calls'].hist(ax=ax[0,1])
+df['total day calls'].hist(ax=ax[1,0])
+#%%
 
 
 
